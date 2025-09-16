@@ -1,0 +1,208 @@
+﻿@model ExcelTest.Models.Pc
+
+@{
+    ViewData["Title"] = "Yeni Bilgisayar Ekle";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #6f42c1;
+            --success-color: #1cc88a;
+            --info-color: #36b9cc;
+            --warning-color: #f6c23e;
+            --danger-color: #e74a3b;
+            --light-bg: #f8f9fc;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #e3e6f0;
+            padding: 1rem 1.35rem;
+            font-weight: 600;
+            color: #5a5c69;
+            border-radius: 10px 10px 0 0 !important;
+        }
+
+        .form-container {
+            padding: 2rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #5a5c69;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            border-radius: 0.35rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d3e2;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+            .form-control:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+            }
+
+        .btn-create {
+            background: linear-gradient(to right, var(--success-color), #17a673);
+            border: none;
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            box-shadow: 0 0.15rem 0.35rem rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+            .btn-create:hover {
+                box-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.2);
+                transform: translateY(-2px);
+            }
+
+        .btn-back {
+            background: linear-gradient(to right, #858796, #6c757d);
+            border: none;
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 0.15rem 0.35rem rgba(0, 0, 0, 0.1);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+            .btn-back:hover {
+                box-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.2);
+                transform: translateY(-2px);
+                color: white;
+            }
+
+        .field-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b7b9cc;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-danger {
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .input-with-icon {
+            padding-right: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0"><i class="fas fa-laptop-code me-2"></i>Bilgisayar Takip Sistemi</h1>
+                <a asp-action="Index" class="btn btn-back">
+                    <i class="fas fa-arrow-left me-1"></i> Listeye Dön
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="m-0"><i class="fas fa-plus-circle me-2"></i>Yeni Bilgisayar Ekle</h5>
+                    </div>
+                    <div class="form-container">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Bilgisayar" class="form-label"></label>
+                                <div class="position-relative">
+                                    <input asp-for="Bilgisayar" class="form-control input-with-icon" placeholder="Bilgisayar adını giriniz" />
+                                    <span class="field-icon"><i class="fas fa-laptop"></i></span>
+                                </div>
+                                <span asp-validation-for="Bilgisayar" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Sorunu" class="form-label"></label>
+                                <div class="position-relative">
+                                    <input asp-for="Sorunu" class="form-control input-with-icon" placeholder="Sorunu giriniz" />
+                                    <span class="field-icon"><i class="fas fa-exclamation-triangle"></i></span>
+                                </div>
+                                <span asp-validation-for="Sorunu" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Açıklaması" class="form-label"></label>
+                                <div class="position-relative">
+                                    <input asp-for="Açıklaması" class="form-control input-with-icon" placeholder="Açıklama giriniz" />
+                                    <span class="field-icon"><i class="fas fa-align-left"></i></span>
+                                </div>
+                                <span asp-validation-for="Açıklaması" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-create">
+                                    <i class="fas fa-save me-1"></i> Kaydet
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>
