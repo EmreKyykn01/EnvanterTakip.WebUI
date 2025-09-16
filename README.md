@@ -20,4 +20,4 @@ Uygulama sayesinde bilgisayarların adı, yaşadığı sorun ve açıklamaları 
 ## 📸 Ekran Görüntüleri
 
 ### Ana Sayfa (Bilgisayar Listesi)
-![Ana Sayfa](docs/index.PNG)
+![Ana Sayfa](docs/screenshots/index.png)
