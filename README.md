@@ -16,3 +16,8 @@ Uygulama sayesinde bilgisayarların adı, yaşadığı sorun ve açıklamaları 
 - **AJAX** – Güncelleme işlemi sayfa yenilenmeden yapılır
 - **Validation (Data Annotations)** – Model üzerinde alan kontrolleri
 - **Modal Loading Screen** – Güncelleme sırasında kullanıcıya işlem devam ediyor
+
+## 📸 Ekran Görüntüleri
+
+### Ana Sayfa (Bilgisayar Listesi)
+![Ana Sayfa](docs/index.png)
