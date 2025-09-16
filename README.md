@@ -20,4 +20,4 @@ Uygulama sayesinde bilgisayarların adı, yaşadığı sorun ve açıklamaları 
 ## 📸 Ekran Görüntüleri
 
 ### Ana Sayfa (Bilgisayar Listesi)
-![Ana Sayfa](EnvanterTakip.WebUI/blob/master/index.png)
+![Ana Sayfa](docs/index.png)
